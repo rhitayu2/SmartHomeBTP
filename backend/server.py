@@ -2,8 +2,12 @@ from flask import Flask,redirect, url_for, request
 import pymysql
 import time
 import DBHelper as dbh
+import threading
+import time
 
 app = Flask(__name__)
+
+debug_app = 1
 
 #Connecting to MySQL server
 
@@ -17,6 +21,14 @@ def getSoundFromDB(patient_id):
     soundName = cursor.fetchone()[0]
     return soundName
 
+def sendCorBT(patient_name):
+    cursor = dbh.connection.cursor()
+    cursor.execute("select speaker_address from speakers")
+    speaker_ips = cursor.fetchall()
+    ind_ip = []
+    for i in range(0,len(speaker_ips)):
+        ind_ip.append(speaker_ips[i]['speaker_address'])
+    print(ind_ip)
 
 # All functions corresponding to login and then playing sound
 @app.route('/')
@@ -30,11 +42,13 @@ def login():
         cursor = dbh.connection.cursor()
         username = re[0][1]
         password = re[1][1]
-        print(f"username: {username}")
-        print(f"password: {password}")
+        if debug_app:
+            print(f"username: {username}")
+            print(f"password: {password}")
         cursor.execute(f"select user_password from users where user_name like '{username}'")
         pass_from_db = cursor.fetchone()
-        # print(pass_from_db)
+        if debug_app:
+            print(pass_from_db)
         if pass_from_db is None:
             return "-1"
         elif pass_from_db['user_password'] == password:
@@ -48,11 +62,14 @@ def fetchPatientBT():
     if request.method == 'POST':
         re = list(request.get_json().items())
         patient_name = re[0][1]
-        print(f"patient name : {patient_name}")
         cursor = dbh.connection.cursor()
         cursor.execute(f"select patient_BT_address from patient where patient_name like '{patient_name}'")
         patient_BT = cursor.fetchone()
-        print(patient_BT['patient_BT_address'])
+        if debug_app:
+            print(f"patient name : {patient_name}")
+            print(patient_BT['patient_BT_address'])
+        thread_corBT = threading.Thread(target = sendCorBT, args=(patient_BT['patient_BT_address'],))
+        thread_corBT.start()
         return "1"
         
 
