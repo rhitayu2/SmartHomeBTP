@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SmartHomeFinal</string>
+    <string name="enter_username">Enter Username</string>
+    <string name="register">Register</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="register_account">Register Account</string>
+    <string name="already_a_member_login">Already a member? Login</string>
+</resources>
