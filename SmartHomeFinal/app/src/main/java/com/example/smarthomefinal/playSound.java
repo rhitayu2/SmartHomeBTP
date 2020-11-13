@@ -1,12 +1,10 @@
 package com.example.smarthomefinal;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import org.json.JSONObject;
@@ -17,15 +15,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class SendDetails extends AsyncTask<String, Void, String> {
+public class playSound extends AsyncTask<String, Void, String> {
 
-    @SuppressLint("StaticFieldLeak")
-    Context cont;
-    String user_name;
-    SendDetails(Context c){
-        this.cont = c;
+    Context c;
+    String patient_name;
+    playSound(Context c){
+        this.c = c;
     }
-
     @Override
     protected String doInBackground(String... params) {
 
@@ -42,9 +38,8 @@ public class SendDetails extends AsyncTask<String, Void, String> {
 
             DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
             JSONObject postJson = new JSONObject();
-            user_name = params[1];
+            patient_name = params[1];
             postJson.put("username", params[1]);
-            postJson.put("password", params[2]);
             wr.write(postJson.toString().getBytes());
             wr.flush();
             wr.close();
@@ -66,27 +61,27 @@ public class SendDetails extends AsyncTask<String, Void, String> {
             }
         }
         return data;
-//        Toast.makeText(getApplicationContext(MainActivity), )
     }
 
     @Override
     protected void onPostExecute(String result) {
-        super.onPostExecute(result);
+//        super.onPostExecute(result);
         Log.e("TAG", result.getClass().getName());
-        if(result.equals("0")) {
-            Intent intent = new Intent(cont, familiarActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("user_name", user_name);
-            cont.startActivity(intent);
-        }
-        else if(result.equals("1")){
-            Intent intent = new Intent(cont, adminActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("user_name", user_name);
-            cont.startActivity(intent);
-        }
-        else{
-            Toast.makeText(cont, "Wrong Credentials", Toast.LENGTH_LONG).show();
-        }
+//        if(result.equals("0")) {
+//            Intent intent = new Intent(cont, familiarActivity.class);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            intent.putExtra("user_name", user_name);
+//            cont.startActivity(intent);
+//        }
+//        else if(result.equals("1")){
+//            Intent intent = new Intent(cont, adminActivity.class);
+//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            intent.putExtra("user_name", user_name);
+//            cont.startActivity(intent);
+//        }
+//        else{
+//            Toast.makeText(cont, "Wrong Credentials", Toast.LENGTH_LONG).show();
+//        }
+        Toast.makeText(c, "Request sent for "+patient_name, Toast.LENGTH_LONG).show();
     }
 }

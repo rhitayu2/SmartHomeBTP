@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity{
             public void onClick(View v) {
                     String usernameEditText = username.getText().toString();
                     String passwordEditText = password.getText().toString();
-                    String postLoginUrl = "http://192.168.29.148:4444/login";
+                    String postLoginUrl = "http://192.168.29.240:4444/login";
 
                     new SendDetails(getApplicationContext()).execute(postLoginUrl, usernameEditText, passwordEditText);
 

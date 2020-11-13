@@ -40,6 +40,20 @@ def login():
         elif pass_from_db['user_password'] == password:
             cursor.execute(f"select user_admin_flag from users where user_name like '{username}'")
             return str((cursor.fetchone())['user_admin_flag'])
+        else:
+            return "-1"
+        
+@app.route('/fetchPatientBT', methods=['POST', 'GET'])
+def fetchPatientBT():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        patient_name = re[0][1]
+        print(f"patient name : {patient_name}")
+        cursor = dbh.connection.cursor()
+        cursor.execute(f"select patient_BT_address from patient where patient_name like '{patient_name}'")
+        patient_BT = cursor.fetchone()
+        print(patient_BT['patient_BT_address'])
+        return "1"
         
 
 @app.route('/fetchSuffererList', methods=['POST', 'GET'])
@@ -50,16 +64,6 @@ def fetchSuffere():
         username = re[0][1]
         print(username)
         return username
-
-@app.route('/fetchPatientBT', methods=['POST', 'GET'])
-def fetchPatientBT():
-    if request.method == 'GET':
-        patient_id = request.args.get('patient_id')
-        patien_name = request.args.get('patient_name')
-        dbh.connection.cursor.execute("select patient_BT_address from patient where patient_id = %d", (patient_id))
-        BTAddress = dbh.connection.cursor.fetchone()[0]
-        # return BTAddress
-        # Part of the code, where we send them to each node
 
 @app.route('/sortBTSignal', methods=['POST', 'GET'])
 def sortBT():
