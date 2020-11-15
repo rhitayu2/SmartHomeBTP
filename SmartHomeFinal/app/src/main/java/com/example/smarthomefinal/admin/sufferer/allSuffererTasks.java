@@ -25,12 +25,12 @@ public class allSuffererTasks extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    Intent intent = new Intent(getApplicationContext(), addSufferrer.class);
-                    getApplicationContext().startActivity(intent);
+                    Intent intent = new Intent(getApplicationContext(), addSufferer.class);
+                    allSuffererTasks.this.startActivity(intent);
                 }
                 else if(position == 1){
                     Intent intent = new Intent(getApplicationContext(), deleteSufferer.class);
-                    getApplicationContext().startActivity(intent);
+                    allSuffererTasks.this.startActivity(intent);
                 }
             }
         });

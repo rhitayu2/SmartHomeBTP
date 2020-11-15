@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.smarthomefinal.MainActivity;
 import com.example.smarthomefinal.R;
 import com.example.smarthomefinal.admin.familiar.allFamiliarTasks;
 import com.example.smarthomefinal.admin.familiar_sufferer.allFSTasks;
@@ -30,22 +31,22 @@ public class adminActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
                     Intent intent = new Intent(getApplicationContext(), allFamiliarTasks.class);
-                    intent.putExtra("Index","Familiar");
+//                    intent.putExtra("Index","Familiar");
                     adminActivity.this.startActivity(intent);
                 }
                 else if(position == 1){
                     Intent intent = new Intent(getApplicationContext(), allSuffererTasks.class);
-                    intent.putExtra("Index","Familiar");
+//                    intent.putExtra("Index","Familiar");
                     adminActivity.this.startActivity(intent);
                 }
                 else if(position == 2){
                     Intent intent = new Intent(getApplicationContext(), allFSTasks.class);
-                    intent.putExtra("Index","Familiar");
+//                    intent.putExtra("Index","Familiar");
                     adminActivity.this.startActivity(intent);
                 }
                 else if(position == 3){
                     Intent intent = new Intent(getApplicationContext(), allSpeakerTasks.class);
-                    intent.putExtra("Index","Familiar");
+//                    intent.putExtra("Index","Familiar");
                     adminActivity.this.startActivity(intent);
                 }
             }

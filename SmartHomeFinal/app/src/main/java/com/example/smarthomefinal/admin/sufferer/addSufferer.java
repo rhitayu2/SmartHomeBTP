@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.smarthomefinal.R;
 
-public class addSufferrer extends AppCompatActivity {
+public class addSufferer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

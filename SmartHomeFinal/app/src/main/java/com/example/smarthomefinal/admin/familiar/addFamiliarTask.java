@@ -30,7 +30,7 @@ public class addFamiliarTask extends AppCompatActivity {
                 username = familiarUsername.getText().toString();
                 password = familiarPassword.getText().toString();
                 flag = familiarAdminFlag.getText().toString();
-                new AsyncMain(getApplicationContext()).execute(username, password, flag);
+                new AsyncMain(getApplicationContext()).execute(getString(R.string.server_ip),"addFamiliar",username, password, flag);
             }
         });
 

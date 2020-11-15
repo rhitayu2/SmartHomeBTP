@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Enter Familiar Name"
+        android:text=""
         app:layout_constraintBottom_toTopOf="@+id/FamiliarPasswordEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
@@ -98,7 +98,7 @@
         android:text="Set Admin Flag"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.347"
+        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/FamiliarPasswordEditText"
         app:layout_constraintVertical_bias="0.083" />

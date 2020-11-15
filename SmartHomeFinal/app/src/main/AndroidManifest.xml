@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".admin.sufferer.deleteSufferer"></activity>
-        <activity android:name=".admin.sufferer.addSufferrer" />
+        <activity android:name=".admin.sufferer.addSufferer" />
         <activity android:name=".admin.familiar.deleteFamiliarTask" />
         <activity android:name=".admin.familiar.addFamiliarTask" />
         <activity android:name=".admin.speakers.allSpeakerTasks" />

@@ -12,12 +12,13 @@ import android.widget.ListView;
 import com.example.smarthomefinal.R;
 
 public class allFamiliarTasks extends AppCompatActivity {
-    String[] familiarTasks = {"Add Familiar", "Delete Familiar"};
+    String[] familiarTasks ;
     ListView familiarTaskList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        familiarTasks = new String[]{"Add Familiar", "Delete Familiar"};
         familiarTaskList = (ListView)findViewById(R.id.simpleListView);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.textView, familiarTasks);
         familiarTaskList.setAdapter(arrayAdapter);
@@ -26,11 +27,11 @@ public class allFamiliarTasks extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
                     Intent intent = new Intent(getApplicationContext(), addFamiliarTask.class);
-                    getApplicationContext().startActivity(intent);
+                    allFamiliarTasks.this.startActivity(intent);
                 }
                 else if(position == 1){
                     Intent intent = new Intent(getApplicationContext(), deleteFamiliarTask.class);
-                    getApplicationContext().startActivity(intent);
+                    allFamiliarTasks.this.startActivity(intent);
                 }
             }
         });
