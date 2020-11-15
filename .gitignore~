@@ -13,6 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-/home/norman/Desktop/projects/SmartHomeBTP/backend/__pycache__
-/home/norman/Desktop/projects/SmartHomeBTP/backend/smarthome
-/home/norman/Desktop/projects/SmartHomeBTP/backend/activate.sh
+/__pycache__
+/backend/smarthome
+/backend/activate.sh
