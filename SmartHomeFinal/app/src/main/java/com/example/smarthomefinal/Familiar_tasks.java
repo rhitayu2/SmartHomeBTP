@@ -22,14 +22,14 @@ public class Familiar_tasks extends AppCompatActivity {
         familiarTaskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                if(position == 0){
-//                    Intent intent = new Intent(getApplicationContext(), addFamiliarTask.class);
-//                    getApplicationContext().startActivity(intent);
-//                }
-//                else if(position == 1){
-//                    Intent intent = new Intent(getApplicationContext(), deleteFamiliarTask.class);
-//                    getApplicationContext().startActivity(intent);
-//                }
+                if(position == 0){
+                    Intent intent = new Intent(getApplicationContext(), addFamiliarTask.class);
+                    getApplicationContext().startActivity(intent);
+                }
+                else if(position == 1){
+                    Intent intent = new Intent(getApplicationContext(), deleteFamiliarTask.class);
+                    getApplicationContext().startActivity(intent);
+                }
             }
         });
     }

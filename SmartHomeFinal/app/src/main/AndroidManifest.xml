@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".deleteFamiliarTask"></activity>
+        <activity android:name=".addFamiliarTask" />
         <activity android:name=".Speakers_tasks" />
         <activity android:name=".FS_tasks" />
         <activity android:name=".Sufferer_tasks" />
