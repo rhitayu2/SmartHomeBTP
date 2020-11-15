@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.smarthomefinal.R;
-import com.example.smarthomefinal.admin.addFamiliarAsync;
 
 public class addFamiliarTask extends AppCompatActivity {
     EditText familiarUsername, familiarPassword, familiarAdminFlag;
@@ -30,7 +29,7 @@ public class addFamiliarTask extends AppCompatActivity {
                 username = familiarUsername.getText().toString();
                 password = familiarPassword.getText().toString();
                 flag = familiarAdminFlag.getText().toString();
-                new addFamiliarAsync(getApplicationContext()).execute(username, password, flag);
+                new AsyncMain(getApplicationContext()).execute(username, password, flag);
             }
         });
 

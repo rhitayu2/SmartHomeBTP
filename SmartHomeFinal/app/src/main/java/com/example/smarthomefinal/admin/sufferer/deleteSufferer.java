@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class deleteSufferrer extends AppCompatActivity {
+import com.example.smarthomefinal.R;
+
+public class deleteSufferer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

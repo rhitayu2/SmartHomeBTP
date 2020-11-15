@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.smarthomefinal.R;
-import com.example.smarthomefinal.admin.deleteFamiliarAsync;
 
 public class deleteFamiliarTask extends AppCompatActivity {
     EditText familiarDeleteUsername, familiarDeletePassword;
@@ -25,7 +24,7 @@ public class deleteFamiliarTask extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String username = familiarDeleteUsername.getText().toString();
-                new deleteFamiliarAsync(getApplicationContext()).execute(username);
+                new AsyncMain(getApplicationContext()).execute(username);
             }
         });
     }

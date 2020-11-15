@@ -10,26 +10,27 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.smarthomefinal.R;
+import com.example.smarthomefinal.admin.familiar.addFamiliarTask;
 
-public class allSuffererTasks extends AppCompatActivity {
-    String[] SuffererTasks = {"Add Sufferer", "Delete Sufferer"};
-    ListView SuffererTaskList;
+public class allFamiliarTasks extends AppCompatActivity {
+    String[] familiarTasks = {"Add Familiar", "Delete Familiar"};
+    ListView familiarTaskList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
-        SuffererTaskList = (ListView)findViewById(R.id.simpleListView);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.textView, SuffererTasks);
-        SuffererTaskList.setAdapter(arrayAdapter);
-        SuffererTaskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        familiarTaskList = (ListView)findViewById(R.id.simpleListView);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.textView, familiarTasks);
+        familiarTaskList.setAdapter(arrayAdapter);
+        familiarTaskList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
-                    Intent intent = new Intent(getApplicationContext(), addSufferrer.class);
+                    Intent intent = new Intent(getApplicationContext(), addFamiliarTask.class);
                     getApplicationContext().startActivity(intent);
                 }
                 else if(position == 1){
-                    Intent intent = new Intent(getApplicationContext(), deleteSufferrer.class);
+                    Intent intent = new Intent(getApplicationContext(), deleteFamiliarTask.class);
                     getApplicationContext().startActivity(intent);
                 }
             }
