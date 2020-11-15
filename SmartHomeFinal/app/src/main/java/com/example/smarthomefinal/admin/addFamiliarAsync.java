@@ -1,4 +1,4 @@
-package com.example.smarthomefinal;
+package com.example.smarthomefinal.admin;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,9 +15,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class addFamiliar extends AsyncTask<String, Void, String> {
+public class addFamiliarAsync extends AsyncTask<String, Void, String> {
     Context cont;
-    addFamiliar(Context c){
+    addFamiliarAsync(Context c){
         this.cont = c;
     }
 
@@ -29,7 +29,7 @@ public class addFamiliar extends AsyncTask<String, Void, String> {
         HttpURLConnection httpURLConnection = null;
         try {
 
-            httpURLConnection = (HttpURLConnection) new URL(params[0]).openConnection();
+            httpURLConnection = (HttpURLConnection) new URL("http://192.168.29.240:4444/addFamiliar").openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
             httpURLConnection.setRequestProperty("Accept", "application/json");
@@ -37,9 +37,9 @@ public class addFamiliar extends AsyncTask<String, Void, String> {
 
             DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
             JSONObject postJson = new JSONObject();
-            postJson.put("username", params[1]);
-            postJson.put("password", params[2]);
-            postJson.put("admin_flag", params[3]);
+            postJson.put("username", params[0]);
+            postJson.put("password", params[1]);
+            postJson.put("admin_flag", params[2]);
             wr.write(postJson.toString().getBytes());
             wr.flush();
             wr.close();

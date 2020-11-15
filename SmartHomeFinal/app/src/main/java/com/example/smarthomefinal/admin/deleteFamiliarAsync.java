@@ -1,4 +1,4 @@
-package com.example.smarthomefinal;
+package com.example.smarthomefinal.admin;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -29,7 +29,7 @@ public class deleteFamiliarAsync extends AsyncTask<String, Void, String> {
         HttpURLConnection httpURLConnection = null;
         try {
 
-            httpURLConnection = (HttpURLConnection) new URL(params[0]).openConnection();
+            httpURLConnection = (HttpURLConnection) new URL("http://192.168.29.240:4444/deleteFamiliar").openConnection();
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setRequestProperty("Content-Type", "application/json");
             httpURLConnection.setRequestProperty("Accept", "application/json");
@@ -37,7 +37,7 @@ public class deleteFamiliarAsync extends AsyncTask<String, Void, String> {
 
             DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
             JSONObject postJson = new JSONObject();
-            postJson.put("username", params[1]);
+            postJson.put("username", params[0]);
             wr.write(postJson.toString().getBytes());
             wr.flush();
             wr.close();

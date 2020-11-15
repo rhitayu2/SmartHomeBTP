@@ -12,14 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".deleteFamiliarTask"></activity>
-        <activity android:name=".addFamiliarTask" />
-        <activity android:name=".Speakers_tasks" />
-        <activity android:name=".FS_tasks" />
-        <activity android:name=".Sufferer_tasks" />
-        <activity android:name=".Familiar_tasks" />
+        <activity android:name=".admin.deleteSufferrer"></activity>
+        <activity android:name=".admin.addSufferrer" />
+        <activity android:name=".admin.deleteFamiliarTask" />
+        <activity android:name=".admin.addFamiliarTask" />
+        <activity android:name=".admin.allSpeakerTasks" />
+        <activity android:name=".admin.allFSTasks" />
+        <activity android:name=".admin.allSuffererTasks" />
+        <activity android:name=".admin.allFamiliarTasks" />
         <activity android:name=".familiarActivity" />
-        <activity android:name=".adminActivity" />
+        <activity android:name=".admin.adminActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
