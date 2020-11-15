@@ -10,6 +10,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.smarthomefinal.R;
+import com.example.smarthomefinal.admin.familiar.allFamiliarTasks;
+import com.example.smarthomefinal.admin.familiar_sufferer.allFSTasks;
+import com.example.smarthomefinal.admin.speakers.allSpeakerTasks;
+import com.example.smarthomefinal.admin.sufferer.allSuffererTasks;
 
 public class adminActivity extends AppCompatActivity {
     String[] adminTasks = {"Familiar", "Sufferer", "Familiar-Sufferer Relationship", "Speakers"};

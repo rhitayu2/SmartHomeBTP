@@ -1,4 +1,4 @@
-package com.example.smarthomefinal.admin;
+package com.example.smarthomefinal.admin.familiar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.smarthomefinal.R;
+import com.example.smarthomefinal.admin.AsyncMain;
 
 public class deleteFamiliarTask extends AppCompatActivity {
     EditText familiarDeleteUsername, familiarDeletePassword;

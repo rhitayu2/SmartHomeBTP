@@ -1,8 +1,10 @@
-package com.example.smarthomefinal.admin;
+package com.example.smarthomefinal.admin.sufferer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.smarthomefinal.R;
 
 public class addSufferrer extends AppCompatActivity {
 

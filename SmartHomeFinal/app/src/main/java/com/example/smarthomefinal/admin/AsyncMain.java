@@ -15,9 +15,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class addFamiliarAsync extends AsyncTask<String, Void, String> {
+public class AsyncMain extends AsyncTask<String, Void, String> {
     Context cont;
-    addFamiliarAsync(Context c){
+    public AsyncMain(Context c){
         this.cont = c;
     }
 

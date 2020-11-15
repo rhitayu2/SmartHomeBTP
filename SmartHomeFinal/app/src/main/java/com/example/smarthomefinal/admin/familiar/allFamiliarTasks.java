@@ -1,4 +1,4 @@
-package com.example.smarthomefinal.admin;
+package com.example.smarthomefinal.admin.familiar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.smarthomefinal.R;
-import com.example.smarthomefinal.admin.familiar.addFamiliarTask;
 
 public class allFamiliarTasks extends AppCompatActivity {
     String[] familiarTasks = {"Add Familiar", "Delete Familiar"};

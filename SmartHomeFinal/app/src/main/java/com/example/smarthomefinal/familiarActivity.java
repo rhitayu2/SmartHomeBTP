@@ -45,7 +45,7 @@ public class familiarActivity extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        new playSound(getApplicationContext()).execute("http://192.168.29.240:4444/fetchPatientBT",patientList[position]);
+                        new playSound(getApplicationContext()).execute(getString(R.string.server_ip)+"fetchPatientBT",patientList[position]);
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

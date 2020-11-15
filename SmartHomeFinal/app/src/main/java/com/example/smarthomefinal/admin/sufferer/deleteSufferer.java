@@ -1,4 +1,4 @@
-package com.example.smarthomefinal.admin;
+package com.example.smarthomefinal.admin.sufferer;
 
 import androidx.appcompat.app.AppCompatActivity;
 

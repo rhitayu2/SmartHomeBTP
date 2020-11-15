@@ -65,23 +65,8 @@ public class playSound extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-//        super.onPostExecute(result);
+        super.onPostExecute(result);
         Log.e("TAG", result.getClass().getName());
-//        if(result.equals("0")) {
-//            Intent intent = new Intent(cont, familiarActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            intent.putExtra("user_name", user_name);
-//            cont.startActivity(intent);
-//        }
-//        else if(result.equals("1")){
-//            Intent intent = new Intent(cont, adminActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            intent.putExtra("user_name", user_name);
-//            cont.startActivity(intent);
-//        }
-//        else{
-//            Toast.makeText(cont, "Wrong Credentials", Toast.LENGTH_LONG).show();
-//        }
         Toast.makeText(c, "Request sent for "+patient_name, Toast.LENGTH_LONG).show();
     }
 }
