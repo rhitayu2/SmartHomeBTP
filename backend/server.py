@@ -5,6 +5,8 @@ import DBHelper as dbh
 import threading
 import time
 import requests
+import adminCRUDFunctions as admin
+
 
 app = Flask(__name__)
 
@@ -102,7 +104,7 @@ def login():
 
 # The API to be used when the user needs to fetch all the corresponding patients related to it
 @app.route('/fetchSuffererList', methods=['POST', 'GET'])
-def fetchSuffere():
+def fetchSufferer():
     if request.method == POST:
         re = list(request.get_json().items())
         cursor = dbh.connection.cursor()
@@ -136,9 +138,9 @@ def sortBT():
     if request.method == 'POST':
         re = list(request.get_json().items())
         # Need to sort this out further
-        patient_id = request.args.get('patientID')
-        patient_distance = request.args.get('patientStrength')
-        speaker_address = request.args.get('speakerAddress')
+        patient_id = re[0][1]
+        patient_distance = re[1][1]
+        speaker_address = re[2][1]
         speakers.append((patient_distance,speaker_address))
         if len(arr) == 4:
             arr.sort()
@@ -150,6 +152,158 @@ def sortBT():
 '''
 All the Admin CRUD functions come here
 '''
+
+@app.route('/addFamiliar', methods = ['POST', 'GET'])
+def addFamiliar():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        username = re[0][1]
+        password = re[1][1]
+        adminFlag = int(re[2][1])
+        if debug_app:
+            print(username)
+            print(password)
+            print(adminFlag)
+        try:
+            cursor = dbh.connection.cursor()
+            cursor.execute(f"insert into users(user_name, user_password, user_admin_flag) \
+                values('{username}', '{password}',{adminFlag})")
+            dbh.connection.commit()
+            return "1"
+        except:
+            return "-1"
+
+@app.route('/deleteFamiliar', methods=['POST', 'GET'])
+def deleteFamiliar():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        username = re[0][1]
+        password = re[1][1]
+        if debug_app:
+            print(username)
+            print(password)
+        try:
+            cursor = dbh.connection.cursor()
+            cursor.execute(f"delete from users where user_name like '{username}' and \
+                            user_password like '{password}'")
+            dbh.connection.commit()
+            return "1"
+        except:
+            return "-1"
+
+@app.route('/addSufferer', methods=['POST', 'GET'])
+def addSufferer():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        patientName = re[0][1]
+        patientBT = re[1][1]
+        patientSound = re[2][1]
+        if debug_app:
+            print(patientName)
+            print(patientBT)
+            print(patientSound)
+        try:
+            cursor = dbh.connection.cursor()
+            cursor.execute(f"insert into patient (patient_name, patient_BT_address, patient_sound_name) \
+                values ('{patientName}', '{patientBT}', '{patientSound}')")
+            dbh.connection.commit()
+            return "1"
+        except:
+            return "-1"
+
+
+@app.route('/deleteSufferer', methods=['POST', 'GET'])
+def deleteSufferer():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        patientName = re[0][1]
+        if debug_app:
+            print(patientName)
+        try:
+            cursor = dbh.connection.cursor()
+            cursor.execute(f"delete from patient where patient_name like '{patientName}'")
+            dbh.connection.commit()
+            return "1"
+        except:
+            return "-1"
+
+@app.route('/addFS', methods=['POST', 'GET'])
+def addFS():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        familiarName = re[0][1]
+        patientName = re[1][1]
+        soundName = re[2][1]
+        cursor = dbh.connection.cursor()
+        cursor.execute(f"select user_id from users where user_name like '{familiarName}'")
+        familiarID = int(cursor.fetchone()['user_id'])
+        cursor.execute(f"select patient_id from patient where patient_name like '{patientName}'")
+        patientID = int(cursor.fetchone()['patient_id'])
+        if debug_app:
+            print(familiarName)
+            print(patientName)
+            print(soundName)
+            print(familiarID)
+            print(patientID)
+        try:
+            cursor = dbh.connection.cursor()
+            cursor.execute(f"insert into familiar_patient values( {familiarID}, '{familiarName}', {patientID},\
+                '{patientName}', '{soundName}')")
+            dbh.connection.commit()
+            return "1"
+        except:
+            return "-1"
+
+@app.route('/deleteFS', methods=['POST', 'GET'])
+def deleteFS():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        familiarName = re[0][1]
+        patientName = re[1][1]
+        if debug_app:
+            print(familiarName)
+            print(patientName)
+        try:
+            cursor = dbh.connection.cursor()
+            cursor.execute(f"delete from familiar_patient where patient_name like '{patientName}' and \
+                            user_name like '{familiarName}'")
+            dbh.connection.commit()
+            return "1"
+        except:
+            return "-1"
+
+@app.route('/addSpeaker', methods = ['POST', 'GET'])
+def addSpeaker():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        speakerIP = re[0][1]
+        speakerIP += ":8080"
+        if debug_app:
+            print(speakerIP)
+        try:
+            cursor = dbh.connection.cursor()
+            cursor.execute(f"insert into speakers (speaker_address) values ('{speakerIP}')")
+            dbh.connection.commit()
+            return "1"
+        except:
+            return "-1"
+
+@app.route('/deleteSpeaker', methods = ['POST', 'GET'])
+def deleteSpeaker():
+    if request.method == 'POST':
+        re = list(request.get_json().items())
+        speakerIP = re[0][1]
+        speakerIP += ":8080"
+        if debug_app:
+            print(speakerIP)
+        try:
+            cursor = dbh.connection.cursor()
+            cursor.execute(f"delete from speakers where speaker_address like '{speakerIP}'")
+            dbh.connection.commit()
+            return "1"
+        except:
+            return "-1"
+
 
 # @app.route
 if __name__ == "__main__":

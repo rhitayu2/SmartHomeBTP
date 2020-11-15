@@ -7,8 +7,14 @@ cursor = dbh.connection.cursor()
 #User Related functions
 
 def addUser(username, password, ifAdmin):    
-    cursor.execute("insert into users (user_name, user_password, user_admin_flag) values (%s,%s,%s)", (username, password,0))
-    dbh.connection.commit()
+    cursor = dbh.connection.cursor()
+    try:
+        cursor.execute(f"insert into users users(user_name, user_password,user_admin_flag) \
+        values ('{username}','{password}',{ifAdmin})")
+        dbh.connection.commit()
+        return "1"
+    except:
+        return "-1"
 
 def deleteUser(username):
     cursor.execute("delete from users where user_name like %s", (username))
