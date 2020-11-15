@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".familiarActivity"></activity>
+        <activity android:name=".Speakers_tasks" />
+        <activity android:name=".FS_tasks" />
+        <activity android:name=".Sufferer_tasks" />
+        <activity android:name=".Familiar_tasks" />
+        <activity android:name=".familiarActivity" />
         <activity android:name=".adminActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
