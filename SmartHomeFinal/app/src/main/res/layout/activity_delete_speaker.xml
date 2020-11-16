@@ -3,22 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".admin.familiar.deleteFamiliarTask">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/addFamiliarHeading"
+        android:id="@+id/addSpeakerHeading"
         android:layout_width="189dp"
         android:layout_height="101dp"
+        android:layout_marginTop="28dp"
         android:gravity="center_horizontal"
-        android:text="Add Sufferer"
+        android:text="Delete Speaker "
         android:textAlignment="center"
-        android:textSize="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/SuffererNameEditText"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/SpeakerNameEditText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.427" />
+        app:layout_constraintVertical_bias="0.32" />
 
     <TextView
         android:id="@+id/textViewPassword"
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:text="Sufferer Name"
+        android:text="Speaker Name"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,34 +40,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:text="Sufferer Address"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="125dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:text="Primary Sound associated"
+        android:text="Speaker IP Address"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <EditText
-        android:id="@+id/SuffererNameEditText"
+        android:id="@+id/SpeakerNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter Sufferer name"
-        app:layout_constraintBottom_toTopOf="@+id/SuffererAddressEditText"
+        android:hint="Speaker Name "
+        app:layout_constraintBottom_toTopOf="@+id/SpeakerAddressEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toEndOf="@+id/textViewPassword"
@@ -74,14 +62,14 @@
         app:layout_constraintVertical_bias="0.87" />
 
     <EditText
-        android:id="@+id/SuffererAddressEditText"
+        android:id="@+id/SpeakerAddressEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Bluetooth Address"
+        android:hint="Speaker IP Address"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
@@ -89,41 +77,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.43" />
 
-    <EditText
-        android:id="@+id/SuffererSoundTag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Primary Sound associated"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/SuffererAddressEditText"
-        app:layout_constraintVertical_bias="0.083" />
-
     <Button
-        android:id="@+id/saveAddSpeaker"
+        android:id="@+id/deleteSpeaker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SuffererSoundTag"
-        app:layout_constraintVertical_bias="0.31" />
+        app:layout_constraintTop_toBottomOf="@+id/SpeakerAddressEditText"
+        app:layout_constraintVertical_bias="0.402" />
 
-    <Button
-        android:id="@+id/Back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.229"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SuffererSoundTag"
-        app:layout_constraintVertical_bias="0.312" />
 </androidx.constraintlayout.widget.ConstraintLayout>

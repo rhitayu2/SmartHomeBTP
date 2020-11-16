@@ -12,7 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".admin.sufferer.deleteSufferer"></activity>
+        <activity android:name=".admin.familiar_sufferer.deleteFS"></activity>
+        <activity android:name=".admin.familiar_sufferer.addFS" />
+        <activity android:name=".admin.speakers.deleteSpeaker" />
+        <activity android:name=".admin.speakers.addSpeaker" />
+        <activity android:name=".admin.sufferer.deleteSufferer" />
         <activity android:name=".admin.sufferer.addSufferer" />
         <activity android:name=".admin.familiar.deleteFamiliarTask" />
         <activity android:name=".admin.familiar.addFamiliarTask" />

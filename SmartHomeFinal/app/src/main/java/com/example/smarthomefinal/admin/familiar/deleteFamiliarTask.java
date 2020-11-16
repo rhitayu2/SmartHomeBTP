@@ -22,13 +22,14 @@ public class deleteFamiliarTask extends AppCompatActivity {
         sadpass = (EditText)findViewById(R.id.sadpass);
         saduser = (EditText)findViewById(R.id.saduser);
         delete = (Button)findViewById(R.id.Delete);
-        user = saduser.getText().toString();
-        pass = sadpass.getText().toString();
-        Log.e("DELETE_FAM user:", user);
-        Log.e("DELETE_FAM pass:", pass);
+
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                user = saduser.getText().toString();
+                pass = sadpass.getText().toString();
+                Log.e("DELETE_FAM user:", user);
+                Log.e("DELETE_FAM pass:", pass);
                 new AsyncMain(getApplicationContext()).execute(getString(R.string.server_ip),"deleteFamiliar", user, pass);
             }
         });

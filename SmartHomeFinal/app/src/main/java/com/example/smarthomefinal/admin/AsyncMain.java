@@ -41,47 +41,50 @@ public class AsyncMain extends AsyncTask<String, Void, String> {
             DataOutputStream wr = new DataOutputStream(httpURLConnection.getOutputStream());
             JSONObject postJson = new JSONObject();
 //            Handling all the admin functions
-            if(params[1].equals("addFamiliar")) {
-                postJson.put("username", params[2]);
-                postJson.put("password", params[3]);
-                postJson.put("admin_flag", params[4]);
-                wr.write(postJson.toString().getBytes());
+            switch (params[1]) {
+                case "addFamiliar":
+                    Log.e("DELETE_FAM", "REACHED_addfamiliar");
+                    postJson.put("username", params[2]);
+                    postJson.put("password", params[3]);
+                    postJson.put("admin_flag", params[4]);
+                    break;
+                case "deleteFamiliar":
+                    Log.e("DELETE_FAM", "REACHED_deleteFamiliar");
+                    Log.e("DELETE_FAM", "0:" + params[0]);
+                    Log.e("DELETE_FAM", "1:" + params[1]);
+                    Log.e("DELETE_FAM", "2:" + params[2]);
+                    Log.e("DELETE_FAM", "3:" + params[3]);
+                    postJson.put("username", params[2]);
+                    postJson.put("password", params[3]);
+                    break;
+                case "addSufferer":
+                    postJson.put("patient_name", params[2]);
+                    postJson.put("address", params[3]);
+                    postJson.put("sound_name", params[4]);
+                    break;
+                case "deleteSufferer":
+                    postJson.put("patient_name", params[2]);
+                    break;
+                case "addFS":
+                    postJson.put("familiar_name", params[2]);
+                    postJson.put("patient_name", params[3]);
+                    postJson.put("sound", params[4]);
+                    break;
+                case "deleteFS":
+                    postJson.put("familiar_name", params[2]);
+                    postJson.put("sufferer_name", params[3]);
+                    break;
+                case "addSpeaker":
+                    postJson.put("speaker_name", params[2]);
+                    break;
+                case "deleteSpeaker":
+                    postJson.put("speaker_name", params[2]);
+                    break;
+                default:
+                    Log.e("ERROR_JSON", "NO options match");
+                    break;
             }
-            else if(params[1].equals("deleteFamiliar")){
-                Log.e("DELETE_FAM", "REACHED");
-                Log.e("DELETE_FAM", params[0]);
-                Log.e("DELETE_FAM", params[1]);
-                Log.e("DELETE_FAM", params[2]);
-                Log.e("DELETE_FAM", params[3]);
-                postJson.put("username", params[2]);
-                postJson.put("password", params[3]);
-            }
-            else if(params[1].equals("addSufferer")){
-                postJson.put("patient_name", params[2]);
-                postJson.put("address", params[3]);
-                postJson.put("sound_name", params[4]);
-            }
-            else if(params[1].equals("deleteSufferer")){
-                postJson.put("patient_name", params[2]);
-            }
-            else if(params[1].equals("addFS")){
-                postJson.put("familiar_name", params[2]);
-                postJson.put("patient_name", params[3]);
-                postJson.put("sound", params[4]);
-            }
-            else if(params[1].equals("deleteFS")){
-                postJson.put("familiar_name", params[2]);
-                postJson.put("sufferer_name", params[3]);
-            }
-            else if(params[1].equals("addSpeaker")){
-                postJson.put("speaker_name", params[2]);
-            }
-            else if(params[1].equals("deleteSpeaker")){
-                postJson.put("speaker_name", params[2]);
-            }
-            else{
-                Log.e("ERROR_JSON", "NO options match");
-            }
+            wr.write(postJson.toString().getBytes());
             wr.flush();
             wr.close();
 

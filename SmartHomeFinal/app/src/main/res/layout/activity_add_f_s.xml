@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.familiar.deleteFamiliarTask">
+    tools:context=".admin.familiar_sufferer.addFS">
 
     <TextView
         android:id="@+id/addFamiliarHeading"
-        android:layout_width="189dp"
-        android:layout_height="101dp"
+        android:layout_width="213dp"
+        android:layout_height="133dp"
         android:gravity="center_horizontal"
-        android:text="Add Sufferer"
+        android:text="Add Familiar Sufferer Relationship"
         android:textAlignment="center"
         android:textSize="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/SuffererNameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/FSFamiliarNameEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,87 +24,86 @@
         android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:text="Sufferer Name"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:text="Familiar Name"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
+        app:layout_constraintVertical_bias="0.823" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:text="Sufferer Address"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="Sufferer Name"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.844" />
+        app:layout_constraintVertical_bias="0.861" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="125dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="4dp"
-        android:text="Primary Sound associated"
+        android:layout_width="131dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="Sound Associated"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538" />
+        app:layout_constraintVertical_bias="0.543" />
 
     <EditText
-        android:id="@+id/SuffererNameEditText"
+        android:id="@+id/FSFamiliarNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Enter Familiar Name"
         android:inputType="textPersonName"
-        android:hint="Enter Sufferer name"
-        app:layout_constraintBottom_toTopOf="@+id/SuffererAddressEditText"
+        app:layout_constraintBottom_toTopOf="@+id/FSSuffererNameEditText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toEndOf="@+id/textViewPassword"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87" />
+        app:layout_constraintVertical_bias="0.872" />
 
     <EditText
-        android:id="@+id/SuffererAddressEditText"
+        android:id="@+id/FSSuffererNameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:ems="10"
+        android:hint="Enter Sufferer Name"
         android:inputType="textPersonName"
-        android:hint="Bluetooth Address"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.727"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.43" />
+        app:layout_constraintVertical_bias="0.431" />
 
     <EditText
-        android:id="@+id/SuffererSoundTag"
+        android:id="@+id/FSKeySoundAssociated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Key Sound associated"
         android:inputType="textPersonName"
-        android:hint="Primary Sound associated"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.43"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/SuffererAddressEditText"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintTop_toBottomOf="@+id/FSSuffererNameEditText"
+        app:layout_constraintVertical_bias="0.084" />
 
     <Button
-        android:id="@+id/saveAddSpeaker"
+        android:id="@+id/saveAddFS"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save"
@@ -112,7 +111,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SuffererSoundTag"
+        app:layout_constraintTop_toBottomOf="@+id/FSKeySoundAssociated"
         app:layout_constraintVertical_bias="0.31" />
 
     <Button
@@ -124,6 +123,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.229"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SuffererSoundTag"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
         app:layout_constraintVertical_bias="0.312" />
 </androidx.constraintlayout.widget.ConstraintLayout>
