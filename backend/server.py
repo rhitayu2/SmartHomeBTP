@@ -9,10 +9,11 @@ import adminCRUDFunctions as admin
 
 
 app = Flask(__name__)
+app.config.from_object('config')
 
-debug_app = 1
 
-localhost = "0.0.0.0"
+debug_app = app.config["DEBUG_APP_ROUTES"]
+localhost = app.config["LOCALHOST"]
 
 # All the global variables
 global familiar

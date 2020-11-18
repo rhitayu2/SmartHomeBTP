@@ -1,3 +1,5 @@
+-- SQL Queries to create all the tables in our schema
+
 create table users(
       user_id INT AUTO_INCREMENT,
       user_name VARCHAR(100) NOT NULL,
@@ -24,3 +26,8 @@ create table familiar_patient(
       patient_name varchar(100),
       sound varchar(100)
       );
+      
+-- Default insertion of an admin account, so that all the other functions can
+-- be completed throught the SmartHomeFinal App
+
+INSERT INTO USERS VALUES(1, "admin", "root", 1);

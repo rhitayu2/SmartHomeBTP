@@ -1,5 +1,7 @@
 package com.example.serverappnode;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -9,7 +11,6 @@ import fi.iki.elonen.NanoHTTPD;
 
 public class serverReceive extends NanoHTTPD {
     private final static int PORT = 8080;
-
     public serverReceive() throws IOException {
         super(PORT);
         start();
@@ -23,12 +24,17 @@ public class serverReceive extends NanoHTTPD {
         msg += "<p>We serve " + session.getUri() + " !</p>";
         String[] api = session.getUri().split("/",5);
 //        Manually routing through string comparison
+        for(int i = 0 ; i< api.length; i++){
+            Log.e("API_CONTENT", api[i]);
+        }
+        Log.e("API_CONTENT", api[0].getClass().getName());
         if(api[0].equals("getStrength")){
             new getStrength().execute(api[1]);
         }
         else if(api[0].equals("playSoundPhone")){
             new playSoundPhone().execute(api[1]);
         }
+
         return newFixedLengthResponse( msg + "</body></html>\n" );
     }
 }

@@ -22,6 +22,7 @@ public class getStrength extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         patient_BT_strength = "";
+        Log.e("API_CONTENT", "reached async for getStrength");
 //        Part of the code where we will take the BT address of the
 //        corresponding patient
         patient_BT_address = params[0];
