@@ -14,10 +14,11 @@ app.config.from_object('config')
 
 debug_app = app.config["DEBUG_APP_ROUTES"]
 localhost = app.config["LOCALHOST"]
+debug_server = app.config["DEBUG_SERVER"]
 
 # All the global variables
-global familiar
-# global speakers = []
+familiar
+speakers = []
 
 '''
 Listing all the utility functions
@@ -27,9 +28,9 @@ Listing all the utility functions
 def getSoundFromDB(patient_id):
     global familiar
     cursor = dbh.connection.cursor()
-    cursor.execute(f"select patient_sound_name from patient where patient_id like '{patient_id}' \
-                     and user_name like '{familiar}'")
-    soundName = cursor.fetchone()[0]
+    cursor.execute(f"select sound from familiar_patient from where user_name like '{familiar}' and \
+                    patient_id = {patient_id}")
+    soundName = str(cursor.fetchone()[0])
     return soundName
 
 # Function to query all the Server App Nodes and tell them to find the following BT Address
@@ -308,5 +309,4 @@ def deleteSpeaker():
 
 # @app.route
 if __name__ == "__main__":
-    # app.run(host = localhost, port = 4444, debug = True)
-    app.run(host = localhost, port = 4444)
+    app.run(host = localhost, port = 4444, debug = debug_server)
