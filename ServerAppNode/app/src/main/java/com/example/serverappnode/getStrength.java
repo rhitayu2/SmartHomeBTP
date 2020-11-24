@@ -1,4 +1,4 @@
-package com.example.serverappnode;
+package play_sound_success = "No"com.example.serverappnode;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -23,9 +23,9 @@ public class getStrength extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
         patient_BT_strength = "";
         Log.e("API_CONTENT", "reached async for getStrength");
-//        Part of the code where we will take the BT address of the
-//        corresponding patient
         patient_BT_address = params[0];
+//        Using getStrengthUtil to fetch the strength
+        patient_BT_strength = getStrenghtUtil(String BT_address).start();
         return patient_BT_strength;
     }
 
