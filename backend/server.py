@@ -13,7 +13,7 @@ app.config.from_object('config')
 
 
 debug_app = app.config["DEBUG_APP_ROUTES"]
-localhost = app.config["LOCALHOST"]
+localhost = app.config["LOCAL_HOST"]
 
 # All the global variables
 global familiar
@@ -43,26 +43,27 @@ def sendCorBT(patient_BT_address):
     # Function part where we send to each speaker the request
     for sp_ip in ind_ip:
         if debug_app:
-            print(sp_ip)
+            print(f"Speaker IP : {sp_ip}")
         data = {
             "patient" : patient_BT_address
         }
         try:
             req = requests.get("http://"+sp_ip+"/getStrength/"+patient_BT_address)
+            print(f"[+] Host {sp_ip} is reachable\n")
         
         except:
-            print(f"[-]Host {sp_ip} not reachable")
+            print(f"[-]Host {sp_ip} not reachable\n")
         
-        if debug_app:
-            print(f"[!] Trying to send request to {sp_ip} for finding strength")
-            print("Response Code => " + sp_ip +" : "+ str(req))
-
+        # if debug_app:
+            # print("Response Code => " + sp_ip +" : "+ str(req))
 
 def sendNodeAppSound(soundName, ideal_speaker_ip):
     # A GET method is used to send the sound name
     url = "http://"+ideal_speaker_ip+":8080/playSoundPhone/"+soundName
     try:
         req = requests.get(url)
+        if debug_app:
+            print(f"[+] Sending {soundName} to {speaker_ip}")
     except:
         if debug_app:
             print(f"Host {ideal_speaker_ip} unreachable")
@@ -94,7 +95,7 @@ def login():
         cursor.execute(f"select user_password from users where user_name like '{username}'")
         pass_from_db = cursor.fetchone()
         if debug_app:
-            print(pass_from_db)
+            print(f"password from DB : {pass_from_db['user_password']}\n")
         if pass_from_db is None:
             return "-1"
         elif pass_from_db['user_password'] == password:
@@ -126,7 +127,7 @@ def fetchPatientBT():
         patient_BT = cursor.fetchone()
         if debug_app:
             print(f"patient name : {patient_name}")
-            print(patient_BT['patient_BT_address'])
+            print(f"patient_BT_address : {patient_BT['patient_BT_address']}")
         thread_corBT = threading.Thread(target = sendCorBT, args=(patient_BT['patient_BT_address'],))
         thread_corBT.start()
         return "1"
@@ -141,12 +142,16 @@ def sortBT():
         # Need to sort this out further
         patient_id = re[0][1]
         patient_distance = re[1][1]
-        speaker_address = re[2][1]
+        speaker_ip = re[2][1]
+        if debug_app:
+            print(f"[+] RSSI value from {speaker_ip} : {patient_distance} dB")
         speakers.append((patient_distance,speaker_address))
         if len(arr) == 4:
             arr.sort()
             ideal_speaker_ip = arr[0][1]
             getSoundName = getSoundFromDB(patient_id)
+            if debug_app:
+                print(f"[!] Related sound name : {getSoundName}")
             sendNodeAppSound(getSoundName,ideal_speaker_ip)
             arr.clear()
 
